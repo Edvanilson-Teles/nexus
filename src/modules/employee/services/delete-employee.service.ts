@@ -9,7 +9,11 @@ export class DeleteEmployeeService {
     @InjectRepository(Employee)
     private readonly deleteEmployeeRepository: Repository<Employee>,
   ) {}
-  async remove(id: number): Promise<void> {
-    await this.deleteEmployeeRepository.delete(id);
+  async remove(id: number, companyId?: number): Promise<void> {
+    if (companyId) {
+      await this.deleteEmployeeRepository.delete({ id, company: { id: companyId } as any } as any);
+    } else {
+      await this.deleteEmployeeRepository.delete(id);
+    }
   }
 }

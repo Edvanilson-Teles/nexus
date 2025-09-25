@@ -18,6 +18,10 @@ export class CreateEmployeeService {
     const employeeEntity = this.createEmployeeRepository.create(
       EmployeeMapper.toEntity(employeeData),
     );
+    // company should be set by caller for multi-tenant safety
+    if (!employeeEntity.company) {
+      throw new Error('companyId is required');
+    }
 
     const savedEmployee = await handleDbError(() =>
       this.createEmployeeRepository.save(employeeEntity),

@@ -16,7 +16,7 @@ export class PositionMapper {
     };
   }
 
-  static toEntity(data: Partial<IPositionBase>): Partial<IPositionBase> {
+  static toEntity(data: Partial<IPositionBase>): Partial<Position> {
     return {
       ...data,
     };

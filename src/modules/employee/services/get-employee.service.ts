@@ -12,12 +12,22 @@ export class GetEmployeeService {
   ) {}
 
   async findAll() {
+    // For multi-tenant safety, callers should pass a companyId to filter results.
     const employees = await this.getEmployeeRepository.find();
     return EmployeeMapper.toResponseList(employees);
   }
 
-  async findOneById(id: number) {
-    const employee = await this.getEmployeeRepository.findOneBy({ id });
+  async findAllByCompany(companyId: number) {
+    const employees = await this.getEmployeeRepository.find({
+      where: { company: { id: companyId } },
+    });
+    return EmployeeMapper.toResponseList(employees);
+  }
+
+  async findOneById(id: number, companyId?: number) {
+    const where: any = { id };
+    if (companyId) where.company = { id: companyId };
+    const employee = await this.getEmployeeRepository.findOne({ where });
 
     if (!employee) {
       throw new NotFoundException(`Employee with ID ${id} not found`);

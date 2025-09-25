@@ -1,17 +1,32 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { GetEmployeeService } from '../services/get-employee.service';
+import { AuthGuard } from '@nestjs/passport';
+import { PermissionGuard } from '../../../common/guards/permission.guard';
+import { RequirePermission } from '../../../common/decorators/require-permission.decorator';
+import { ContextService } from '../../../common/context/context.service';
 
 @Controller('employee')
+@Controller('employee')
+@UseGuards(AuthGuard('jwt'), PermissionGuard)
 export class GetEmployeeController {
-  constructor(private readonly getEmployeeService: GetEmployeeService) {}
+  constructor(
+    private readonly getEmployeeService: GetEmployeeService,
+    private readonly ctxService: ContextService,
+  ) {}
 
   @Get()
+  @RequirePermission('employee.view', 'EmployeeModule')
   findAll() {
-    return this.getEmployeeService.findAll();
+    const ctx = this.ctxService.getContext();
+    const companyId = ctx.company?.id;
+    return this.getEmployeeService.findAllByCompany(companyId as number);
   }
 
   @Get(':id')
+  @RequirePermission('employee.view', 'EmployeeModule')
   findOneById(@Param('id') id: number) {
-    return this.getEmployeeService.findOneById(id);
+    const ctx = this.ctxService.getContext();
+    const companyId = ctx.company?.id;
+    return this.getEmployeeService.findOneById(id, companyId as number);
   }
 }
