@@ -8,6 +8,7 @@ import { PermissionGuard } from './common/guards/permission.guard';
 import configuration from './config/configuration';
 import { DatabaseModule } from './database/database.module';
 import { FeatureModule } from './modules/feature/feature.module';
+import { FinancialModule } from './modules/financial/financial.module';
 import { ModuleModule } from './modules/module/module.module';
 import { OrdersModule } from './modules/orders/orders.module';
 import { OrganizationModule } from './modules/organization/organization.module';
@@ -41,6 +42,7 @@ import { UserModule } from './modules/user/user.module';
     SamplesModule,
     ResultsModule,
     ReportsModule,
+    FinancialModule,
   ],
   controllers: [],
   providers: [
