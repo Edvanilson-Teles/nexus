@@ -267,3 +267,117 @@ PATCH {{baseUrl}}/patients/1/deactivate
 
 ### Deletar Paciente (Soft Delete)
 DELETE {{baseUrl}}/patients/1
+
+### ============================================
+### TESTS - Catálogo de Exames
+### ============================================
+
+### Criar Exame
+POST {{baseUrl}}/tests
+Content-Type: application/json
+
+{
+  "code": "HEMO001",
+  "name": "Hemograma Completo",
+  "category": "hematology",
+  "description": "Análise completa dos componentes sanguíneos",
+  "type": "numeric",
+  "unit": "mil/mm³",
+  "referenceMin": 4.5,
+  "referenceMax": 11.0,
+  "method": "Contador automático",
+  "specimen": "Sangue total com EDTA",
+  "container": "Tubo roxo (EDTA)",
+  "turnaroundTime": 24,
+  "preparation": "Não requer preparo especial",
+  "requiresFasting": false,
+  "price": 45.00,
+  "cost": 15.00,
+  "isActive": true,
+  "isAvailable": true,
+  "companyId": 1
+}
+
+### Listar Exames
+GET {{baseUrl}}/tests
+
+### Buscar Exames (por nome, código ou descrição)
+GET {{baseUrl}}/tests?search=Hemograma
+
+### Filtrar Exames por Categoria
+GET {{baseUrl}}/tests?category=hematology
+
+### Filtrar Exames por Empresa
+GET {{baseUrl}}/tests?companyId=1
+
+### Filtrar Exames Ativos
+GET {{baseUrl}}/tests?isActive=true
+
+### Buscar Exame por ID
+GET {{baseUrl}}/tests/1
+
+### Buscar Exame por Código
+GET {{baseUrl}}/tests/code/HEMO001
+
+### Atualizar Exame
+PATCH {{baseUrl}}/tests/1
+Content-Type: application/json
+
+{
+  "price": 50.00,
+  "turnaroundTime": 12
+}
+
+### Desativar Exame
+PATCH {{baseUrl}}/tests/1/deactivate
+
+### Deletar Exame (Soft Delete)
+DELETE {{baseUrl}}/tests/1
+
+### ============================================
+### TEST PANELS - Painéis de Exames
+### ============================================
+
+### Criar Painel de Exames
+POST {{baseUrl}}/test-panels
+Content-Type: application/json
+
+{
+  "code": "CHECKUP01",
+  "name": "Check-up Completo",
+  "description": "Painel completo para check-up anual",
+  "testIds": [1, 2, 3, 4],
+  "price": 150.00,
+  "discount": 10,
+  "isActive": true,
+  "observations": "Recomendado para adultos acima de 40 anos",
+  "companyId": 1
+}
+
+### Listar Painéis
+GET {{baseUrl}}/test-panels
+
+### Buscar Painéis (por nome, código ou descrição)
+GET {{baseUrl}}/test-panels?search=Check-up
+
+### Filtrar Painéis por Empresa
+GET {{baseUrl}}/test-panels?companyId=1
+
+### Filtrar Painéis Ativos
+GET {{baseUrl}}/test-panels?isActive=true
+
+### Buscar Painel por ID
+GET {{baseUrl}}/test-panels/1
+
+### Atualizar Painel
+PATCH {{baseUrl}}/test-panels/1
+Content-Type: application/json
+
+{
+  "price": 140.00,
+  "discount": 15,
+  "testIds": [1, 2, 3, 4, 5]
+}
+
+### Deletar Painel (Soft Delete)
+DELETE {{baseUrl}}/test-panels/1

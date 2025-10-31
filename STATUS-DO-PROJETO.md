@@ -87,6 +87,32 @@ Criar uma plataforma completa de gerenciamento para laboratórios de análises c
 - ✅ Validação de CPF e email únicos
 - ✅ Campos completos (demograficos, contato, convênio, emergência, médico)
 
+#### Tests (Catálogo de Exames) 🆕
+- ✅ POST /tests - Criar exame
+- ✅ GET /tests - Listar exames (com busca e filtros)
+- ✅ GET /tests/:id - Buscar exame por ID
+- ✅ GET /tests/code/:code - Buscar por código
+- ✅ PATCH /tests/:id - Atualizar exame
+- ✅ DELETE /tests/:id - Soft delete
+- ✅ PATCH /tests/:id/deactivate - Desativar exame
+- ✅ Validação de código único
+- ✅ Categorias (hematology, biochemistry, etc.)
+- ✅ Tipos de resultado (numeric, text, qualitative)
+- ✅ Valores de referência (min/max/texto)
+- ✅ Informações técnicas (método, amostra, recipiente, tempo)
+- ✅ Preparo do paciente (jejum, instruções)
+
+#### Test Panels (Painéis de Exames) 🆕
+- ✅ POST /test-panels - Criar painel
+- ✅ GET /test-panels - Listar painéis (com busca e filtros)
+- ✅ GET /test-panels/:id - Buscar painel por ID (com exames)
+- ✅ PATCH /test-panels/:id - Atualizar painel
+- ✅ DELETE /test-panels/:id - Soft delete
+- ✅ Validação de código único
+- ✅ Vinculação com múltiplos exames
+- ✅ Precificação especial e descontos
+- ✅ Retorna lista completa de exames incluídos
+
 ---
 
 ## 🔄 Em Desenvolvimento Ativo
@@ -105,13 +131,20 @@ Status: **Concluído!**
 - [x] Validações completas
 - [x] Documentação Swagger
 
-#### 2. Tests Catalog (Catálogo de Exames) 🚧
-Status: Não iniciado
-- [ ] Entidade Test
-- [ ] Painéis de exames
-- [ ] Parâmetros por teste
-- [ ] Valores de referência
-- [ ] Unidades de medida
+#### 2. Tests Catalog (Catálogo de Exames) ✅
+Status: **Concluído!**
+- [x] Entidade Test com 20+ campos
+- [x] Painéis de exames (TestPanel)
+- [x] Valores de referência (min/max/texto)
+- [x] Unidades de medida
+- [x] CRUD completo para exames
+- [x] CRUD completo para painéis
+- [x] Busca e filtros avançados
+- [x] Categorização de exames
+- [x] Tipos de resultado (numérico, texto, qualitativo)
+- [x] Informações de preparo (jejum, etc.)
+- [x] Precificação e custos
+- [x] Documentação Swagger completa
 
 #### 3. Orders (Ordens de Exame) 🚧
 Status: Não iniciado

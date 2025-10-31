@@ -38,6 +38,8 @@ async function bootstrap() {
     .addTag('modules', 'Gestão de módulos')
     .addTag('features', 'Gestão de features')
     .addTag('patients', 'Gestão de pacientes')
+    .addTag('tests', 'Catálogo de exames')
+    .addTag('test-panels', 'Painéis de exames')
     .addBearerAuth()
     .build();
   

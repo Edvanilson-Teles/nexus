@@ -13,6 +13,7 @@ import { OrganizationModule } from './modules/organization/organization.module';
 import { PatientsModule } from './modules/patients/patients.module';
 import { PermissionModule } from './modules/permission/permission.module';
 import { RoleModule } from './modules/role/role.module';
+import { TestsModule } from './modules/tests/tests.module';
 import { UserModule } from './modules/user/user.module';
 
 @Module({
@@ -31,6 +32,7 @@ import { UserModule } from './modules/user/user.module';
     ContextModule,
     OrganizationModule,
     PatientsModule,
+    TestsModule,
   ],
   controllers: [],
   providers: [
