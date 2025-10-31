@@ -1,0 +1,199 @@
+# Nexus API Examples
+# Use com REST Client extension no VS Code ou importe no Insomnia/Postman
+
+@baseUrl = http://localhost:3000
+
+### Health Check
+GET {{baseUrl}}/
+
+### ============================================
+### USERS - Usuários
+### ============================================
+
+### Criar Usuário
+POST {{baseUrl}}/user
+Content-Type: application/json
+
+{
+  "name": "Admin User",
+  "email": "admin@nexus.com",
+  "password": "Admin@123"
+}
+
+### Listar Usuários
+GET {{baseUrl}}/user
+
+### Buscar Usuário por ID
+GET {{baseUrl}}/user/1
+
+### Atualizar Usuário
+PATCH {{baseUrl}}/user/1
+Content-Type: application/json
+
+{
+  "name": "Admin User Updated"
+}
+
+### Atualizar Senha do Usuário
+PATCH {{baseUrl}}/user/1/password
+Content-Type: application/json
+
+{
+  "password": "NewPassword@123"
+}
+
+### Deletar Usuário
+DELETE {{baseUrl}}/user/1
+
+### ============================================
+### ROLES - Perfis/Papéis
+### ============================================
+
+### Criar Role
+POST {{baseUrl}}/role
+Content-Type: application/json
+
+{
+  "name": "Admin",
+  "description": "Administrador do sistema"
+}
+
+### Listar Roles
+GET {{baseUrl}}/role
+
+### Buscar Role por ID
+GET {{baseUrl}}/role/1
+
+### Atualizar Role
+PATCH {{baseUrl}}/role/1
+Content-Type: application/json
+
+{
+  "description": "Administrador geral do sistema"
+}
+
+### Deletar Role
+DELETE {{baseUrl}}/role/1
+
+### ============================================
+### COMPANIES - Empresas
+### ============================================
+
+### Criar Empresa
+POST {{baseUrl}}/company
+Content-Type: application/json
+
+{
+  "name": "Laboratório Nexus",
+  "cnpj": "12.345.678/0001-90",
+  "address": "Rua das Análises, 123",
+  "phone": "(11) 98765-4321",
+  "email": "contato@labonexus.com",
+  "isActive": true
+}
+
+### Listar Empresas
+GET {{baseUrl}}/company
+
+### Buscar Empresa por ID
+GET {{baseUrl}}/company/1
+
+### Atualizar Empresa
+PATCH {{baseUrl}}/company/1
+Content-Type: application/json
+
+{
+  "phone": "(11) 98765-9999"
+}
+
+### Deletar Empresa
+DELETE {{baseUrl}}/company/1
+
+### ============================================
+### POSITIONS - Cargos
+### ============================================
+
+### Criar Cargo
+POST {{baseUrl}}/position
+Content-Type: application/json
+
+{
+  "name": "Técnico de Laboratório",
+  "description": "Responsável pela coleta e análise de amostras",
+  "level": "Pleno",
+  "requirements": "Formação em Biomedicina ou áreas afins"
+}
+
+### Listar Cargos
+GET {{baseUrl}}/position
+
+### Buscar Cargo por ID
+GET {{baseUrl}}/position/1
+
+### Atualizar Cargo
+PATCH {{baseUrl}}/position/1
+Content-Type: application/json
+
+{
+  "level": "Sênior"
+}
+
+### Deletar Cargo
+DELETE {{baseUrl}}/position/1
+
+### ============================================
+### PERMISSIONS - Permissões
+### ============================================
+
+### Criar Permissão
+POST {{baseUrl}}/permission
+Content-Type: application/json
+
+{
+  "action": "user:create",
+  "description": "Permissão para criar usuários"
+}
+
+### Listar Permissões
+GET {{baseUrl}}/permission
+
+### Buscar Permissão por ID
+GET {{baseUrl}}/permission/1
+
+### ============================================
+### MODULES - Módulos
+### ============================================
+
+### Criar Módulo
+POST {{baseUrl}}/module
+Content-Type: application/json
+
+{
+  "name": "Pacientes",
+  "description": "Módulo de gestão de pacientes"
+}
+
+### Listar Módulos
+GET {{baseUrl}}/module
+
+### Buscar Módulo por ID
+GET {{baseUrl}}/module/1
+
+### ============================================
+### FEATURES - Features
+### ============================================
+
+### Criar Feature
+POST {{baseUrl}}/feature
+Content-Type: application/json
+
+{
+  "name": "Cadastro de Pacientes",
+  "description": "Feature para cadastrar novos pacientes"
+}
+
+### Listar Features
+GET {{baseUrl}}/feature
+
+### Buscar Feature por ID
+GET {{baseUrl}}/feature/1
