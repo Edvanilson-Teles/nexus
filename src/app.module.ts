@@ -13,6 +13,7 @@ import { OrdersModule } from './modules/orders/orders.module';
 import { OrganizationModule } from './modules/organization/organization.module';
 import { PatientsModule } from './modules/patients/patients.module';
 import { PermissionModule } from './modules/permission/permission.module';
+import { ReportsModule } from './modules/reports/reports.module';
 import { ResultsModule } from './modules/results/results.module';
 import { RoleModule } from './modules/role/role.module';
 import { SamplesModule } from './modules/samples/samples.module';
@@ -39,6 +40,7 @@ import { UserModule } from './modules/user/user.module';
     OrdersModule,
     SamplesModule,
     ResultsModule,
+    ReportsModule,
   ],
   controllers: [],
   providers: [

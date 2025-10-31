@@ -716,3 +716,149 @@ Content-Type: application/json
   "comments": "Delta check performed - variation within acceptable limits"
 }
 
+
+### ============================================
+### REPORTS - Relatórios/Laudos
+### ============================================
+
+### Criar Relatório (Laudo)
+POST {{baseUrl}}/reports
+Content-Type: application/json
+
+{
+  "patientId": 1,
+  "orderId": 1,
+  "companyId": 1,
+  "title": "Hemograma Completo - Resultados",
+  "findings": "Valores hematológicos dentro dos limites da normalidade para idade e sexo. Contagem de leucócitos, hemácias e plaquetas adequadas.",
+  "interpretation": "Hemograma sem alterações significativas. Todos os parâmetros avaliados encontram-se dentro dos valores de referência.",
+  "recommendations": "Manter acompanhamento médico regular. Repetir exame em 6 meses ou conforme orientação médica.",
+  "notes": "Paciente apresentava jejum de 12 horas. Amostra coletada sem intercorrências."
+}
+
+### Listar Todos os Relatórios
+GET {{baseUrl}}/reports
+
+### Listar Relatórios por Status
+GET {{baseUrl}}/reports?status=draft
+
+### Listar Relatórios por Paciente
+GET {{baseUrl}}/reports?patientId=1
+
+### Listar Relatórios por Empresa
+GET {{baseUrl}}/reports?companyId=1
+
+### Buscar Relatório por ID
+GET {{baseUrl}}/reports/1
+
+### Buscar Relatório por Número
+GET {{baseUrl}}/reports/number/RPT2510310001
+
+### Atualizar Relatório (apenas rascunhos)
+PATCH {{baseUrl}}/reports/1
+Content-Type: application/json
+
+{
+  "title": "Hemograma Completo - Resultados Atualizados",
+  "findings": "Valores hematológicos atualizados após revisão.",
+  "interpretation": "Hemograma normal com pequena variação no VCM.",
+  "recommendations": "Acompanhamento em 3 meses."
+}
+
+### Validar Relatório
+PATCH {{baseUrl}}/reports/1/validate
+Content-Type: application/json
+
+{
+  "validatedBy": 1
+}
+
+### Assinar Relatório Digitalmente
+PATCH {{baseUrl}}/reports/1/sign
+Content-Type: application/json
+
+{
+  "signedBy": 1
+}
+
+### Liberar Relatório para Paciente
+PATCH {{baseUrl}}/reports/1/release
+Content-Type: application/json
+
+{
+  "releasedBy": 1
+}
+
+### Gerar PDF do Relatório
+POST {{baseUrl}}/reports/1/generate-pdf
+
+### Download do PDF do Relatório
+GET {{baseUrl}}/reports/1/download-pdf
+
+### Gerar Link de Compartilhamento Seguro (7 dias)
+POST {{baseUrl}}/reports/1/share
+
+### Gerar Link de Compartilhamento com Expiração Customizada (30 dias)
+POST {{baseUrl}}/reports/1/share?expiresInDays=30
+
+### Acessar Relatório por Link de Compartilhamento
+# Substitua {token} pelo token retornado no endpoint de compartilhamento
+GET {{baseUrl}}/reports/share/{token}
+
+### Cancelar Relatório
+PATCH {{baseUrl}}/reports/1/cancel
+
+### Deletar Relatório (soft delete)
+DELETE {{baseUrl}}/reports/1
+
+### ============================================
+### WORKFLOW COMPLETO DE RELATÓRIO
+### ============================================
+
+### 1. Criar Relatório em Rascunho
+POST {{baseUrl}}/reports
+Content-Type: application/json
+
+{
+  "patientId": 1,
+  "orderId": 1,
+  "companyId": 1,
+  "title": "Exame de Glicemia e Colesterol",
+  "findings": "Glicemia em jejum: 95 mg/dL, Colesterol Total: 180 mg/dL, HDL: 50 mg/dL, LDL: 110 mg/dL, Triglicerídeos: 100 mg/dL",
+  "interpretation": "Perfil glicêmico e lipídico dentro dos valores de referência.",
+  "recommendations": "Manter hábitos alimentares saudáveis e prática regular de atividade física."
+}
+
+### 2. Validar o Relatório
+PATCH {{baseUrl}}/reports/2/validate
+Content-Type: application/json
+
+{
+  "validatedBy": 1
+}
+
+### 3. Assinar Digitalmente
+PATCH {{baseUrl}}/reports/2/sign
+Content-Type: application/json
+
+{
+  "signedBy": 1
+}
+
+### 4. Gerar PDF
+POST {{baseUrl}}/reports/2/generate-pdf
+
+### 5. Liberar para Paciente
+PATCH {{baseUrl}}/reports/2/release
+Content-Type: application/json
+
+{
+  "releasedBy": 1
+}
+
+### 6. Gerar Link de Compartilhamento
+POST {{baseUrl}}/reports/2/share?expiresInDays=14
+
+### 7. Download do PDF
+GET {{baseUrl}}/reports/2/download-pdf
+

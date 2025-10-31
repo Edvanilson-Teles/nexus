@@ -43,6 +43,7 @@ async function bootstrap() {
     .addTag('orders', 'Ordens de coleta')
     .addTag('samples', 'Amostras e rastreamento')
     .addTag('results', 'Resultados de exames')
+    .addTag('reports', 'Laudos e relatórios em PDF')
     .addBearerAuth()
     .build();
   
