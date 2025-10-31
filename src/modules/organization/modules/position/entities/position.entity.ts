@@ -1,5 +1,5 @@
 import { BaseCompanyEntity } from 'src/database/entities/base-company.entity';
-import { EmployeePosition } from 'src/modules/employee-position/entities/employee-position.entity';
+import { EmployeePosition } from 'src/modules/human-resources/modules/employee-position/entities/employee-position.entity';
 import { Column, Entity, OneToMany } from 'typeorm';
 
 @Entity()

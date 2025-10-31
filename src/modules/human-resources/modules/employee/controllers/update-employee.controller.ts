@@ -2,9 +2,9 @@ import { Body, Controller, Param, Patch, UseGuards } from '@nestjs/common';
 import { UpdateEmployeeDto } from '../dto/update-employee.dto';
 import { UpdateEmployeeService } from '../services/update-employee.service';
 import { AuthGuard } from '@nestjs/passport';
-import { PermissionGuard } from '../../../common/guards/permission.guard';
-import { RequirePermission } from '../../../common/decorators/require-permission.decorator';
-import { ContextService } from '../../../common/context/context.service';
+import { PermissionGuard } from 'src/common/guards/permission.guard';
+import { RequirePermission } from 'src/common/decorators/require-permission.decorator';
+import { ContextService } from 'src/common/context/context.service';
 
 @Controller('employee')
 @UseGuards(AuthGuard('jwt'), PermissionGuard)

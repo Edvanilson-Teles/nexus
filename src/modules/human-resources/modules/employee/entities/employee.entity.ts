@@ -1,6 +1,6 @@
 import { BaseCompanyEntity } from 'src/database/entities/base-company.entity';
-import { Company } from 'src/modules/company/entities/company.entity';
-import { EmployeePosition } from 'src/modules/employee-position/entities/employee-position.entity';
+import { Company } from 'src/modules/organization/modules/company/entities/company.entity';
+import { EmployeePosition } from 'src/modules/human-resources/modules/employee-position/entities/employee-position.entity';
 import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
 
 @Entity()

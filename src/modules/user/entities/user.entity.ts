@@ -1,6 +1,6 @@
 import * as bcrypt from 'bcryptjs';
 import { BaseEntity } from 'src/database/entities/base.entity';
-import { Company } from 'src/modules/company/entities/company.entity';
+import { Company } from 'src/modules/organization/modules/company/entities/company.entity';
 import { Module } from 'src/modules/module/entities/module.entity';
 import { Role } from 'src/modules/role/entities/role.entity';
 import {
