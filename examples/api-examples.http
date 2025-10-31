@@ -487,3 +487,232 @@ Content-Type: application/json
 {
   "reason": "Amostra hemolisada"
 }
+
+### ========================================
+### RESULTS API EXAMPLES
+### ========================================
+
+### 1. Create a Result (Hemograma - Normal)
+POST http://localhost:3000/results
+Content-Type: application/json
+
+{
+  "sampleId": 1,
+  "testId": 1,
+  "companyId": 1,
+  "value": "13.5",
+  "numericValue": 13.5,
+  "unit": "g/dL",
+  "flag": "normal",
+  "method": "Automated hematology analyzer",
+  "comments": "Sample processed without issues",
+  "status": "pending",
+  "enteredBy": 1,
+  "instrumentName": "Sysmex XN-1000",
+  "qcPassed": true,
+  "qcComments": "All QC controls within acceptable range"
+}
+
+### 2. Create a Result (Glicose - High)
+POST http://localhost:3000/results
+Content-Type: application/json
+
+{
+  "sampleId": 1,
+  "testId": 2,
+  "companyId": 1,
+  "value": "145",
+  "numericValue": 145,
+  "unit": "mg/dL",
+  "referenceRange": "70-100 mg/dL",
+  "method": "Enzymatic colorimetric",
+  "status": "pending",
+  "enteredBy": 1,
+  "instrumentName": "Cobas c311"
+}
+
+### 3. Create a Result (Qualitative - Negative)
+POST http://localhost:3000/results
+Content-Type: application/json
+
+{
+  "sampleId": 2,
+  "testId": 3,
+  "companyId": 1,
+  "value": "Negative",
+  "flag": "normal",
+  "referenceRange": "Negative",
+  "method": "Immunochromatography",
+  "status": "pending",
+  "enteredBy": 1
+}
+
+### 4. Get All Results
+GET http://localhost:3000/results
+
+### 5. Get Results with Filters (By Sample)
+GET http://localhost:3000/results?sampleId=1
+
+### 6. Get Results with Filters (By Status)
+GET http://localhost:3000/results?status=pending
+
+### 7. Get Results with Filters (By Flag - High)
+GET http://localhost:3000/results?flag=high
+
+### 8. Get Results with Filters (By Company and Status)
+GET http://localhost:3000/results?companyId=1&status=validated
+
+### 9. Get Results for a Specific Patient
+GET http://localhost:3000/results/patient/1
+
+### 10. Get Result by ID
+GET http://localhost:3000/results/1
+
+### 11. Update a Result
+PATCH http://localhost:3000/results/1
+Content-Type: application/json
+
+{
+  "comments": "Updated comment - confirmed value",
+  "qcComments": "Repeat test confirmed initial result"
+}
+
+### 12. Validate a Result
+PATCH http://localhost:3000/results/1/validate
+Content-Type: application/json
+
+{
+  "validatedBy": 2,
+  "comments": "Result verified and approved by lab supervisor"
+}
+
+### 13. Release a Result
+PATCH http://localhost:3000/results/1/release
+Content-Type: application/json
+
+{
+  "reviewedBy": 3
+}
+
+### 14. Create a Correction for a Result
+POST http://localhost:3000/results/1/correct
+Content-Type: application/json
+
+{
+  "sampleId": 1,
+  "testId": 1,
+  "companyId": 1,
+  "value": "13.2",
+  "numericValue": 13.2,
+  "unit": "g/dL",
+  "enteredBy": 1,
+  "correctionReason": "Transcription error in original result"
+}
+
+### 15. Delete a Result (Soft Delete)
+DELETE http://localhost:3000/results/1
+
+###
+### RESULTS - Advanced Examples
+###
+
+### 16. Create Result with Critical High Value
+POST http://localhost:3000/results
+Content-Type: application/json
+
+{
+  "sampleId": 3,
+  "testId": 4,
+  "companyId": 1,
+  "value": "450",
+  "numericValue": 450,
+  "unit": "mg/dL",
+  "referenceRange": "70-100 mg/dL",
+  "flag": "critical_high",
+  "method": "Enzymatic hexokinase",
+  "comments": "CRITICAL VALUE - Patient notified immediately",
+  "status": "pending",
+  "enteredBy": 1,
+  "instrumentName": "Cobas c311",
+  "qcPassed": true
+}
+
+### 17. Create Result with Critical Low Value
+POST http://localhost:3000/results
+Content-Type: application/json
+
+{
+  "sampleId": 3,
+  "testId": 5,
+  "companyId": 1,
+  "value": "2.1",
+  "numericValue": 2.1,
+  "unit": "mEq/L",
+  "referenceRange": "3.5-5.0 mEq/L",
+  "flag": "critical_low",
+  "method": "Ion-selective electrode",
+  "comments": "CRITICAL VALUE - Urgent medical attention required",
+  "status": "pending",
+  "enteredBy": 1,
+  "instrumentName": "ABL90 FLEX PLUS"
+}
+
+### 18. Create Result - Failed QC
+POST http://localhost:3000/results
+Content-Type: application/json
+
+{
+  "sampleId": 4,
+  "testId": 1,
+  "companyId": 1,
+  "value": "14.0",
+  "numericValue": 14.0,
+  "unit": "g/dL",
+  "status": "pending",
+  "enteredBy": 1,
+  "instrumentName": "Sysmex XN-1000",
+  "qcPassed": false,
+  "qcComments": "QC control #2 out of range - test repeated"
+}
+
+### 19. Batch Results - Multiple Tests from Same Sample
+POST http://localhost:3000/results
+Content-Type: application/json
+
+{
+  "sampleId": 5,
+  "testId": 6,
+  "companyId": 1,
+  "value": "180",
+  "numericValue": 180,
+  "unit": "mg/dL",
+  "referenceRange": "< 200 mg/dL",
+  "flag": "normal",
+  "method": "Enzymatic colorimetric",
+  "status": "pending",
+  "enteredBy": 1
+}
+
+### 20. Get All Results for Validation (Pending Status)
+GET http://localhost:3000/results?status=pending
+
+### 21. Get All Critical Results
+GET http://localhost:3000/results?flag=critical_high
+
+### 22. Get All Abnormal Results
+GET http://localhost:3000/results?flag=high
+
+### 23. Get Patient History of Results
+GET http://localhost:3000/results/patient/1
+
+### 24. Get Results by Test Type
+GET http://localhost:3000/results?testId=1
+
+### 25. Update Result with Additional Comments
+PATCH http://localhost:3000/results/2
+Content-Type: application/json
+
+{
+  "comments": "Delta check performed - variation within acceptable limits"
+}
+
