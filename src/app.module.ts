@@ -10,6 +10,7 @@ import { DatabaseModule } from './database/database.module';
 import { FeatureModule } from './modules/feature/feature.module';
 import { ModuleModule } from './modules/module/module.module';
 import { OrganizationModule } from './modules/organization/organization.module';
+import { PatientsModule } from './modules/patients/patients.module';
 import { PermissionModule } from './modules/permission/permission.module';
 import { RoleModule } from './modules/role/role.module';
 import { UserModule } from './modules/user/user.module';
@@ -28,10 +29,8 @@ import { UserModule } from './modules/user/user.module';
     FeatureModule,
     AuthModule,
     ContextModule,
-
-
-
-    OrganizationModule
+    OrganizationModule,
+    PatientsModule,
   ],
   controllers: [],
   providers: [

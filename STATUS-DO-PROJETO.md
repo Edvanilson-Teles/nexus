@@ -76,20 +76,34 @@ Criar uma plataforma completa de gerenciamento para laboratórios de análises c
 #### Features (Funcionalidades)
 - ✅ CRUD completo
 
+#### Patients (Pacientes) 🆕
+- ✅ POST /patients - Criar paciente
+- ✅ GET /patients - Listar pacientes (com busca e filtros)
+- ✅ GET /patients/:id - Buscar paciente por ID
+- ✅ GET /patients/cpf/:cpf - Buscar por CPF
+- ✅ PATCH /patients/:id - Atualizar paciente
+- ✅ DELETE /patients/:id - Soft delete
+- ✅ PATCH /patients/:id/deactivate - Desativar paciente
+- ✅ Validação de CPF e email únicos
+- ✅ Campos completos (demograficos, contato, convênio, emergência, médico)
+
 ---
 
 ## 🔄 Em Desenvolvimento Ativo
 
 ### Próxima Sprint - Módulos Clínicos
 
-#### 1. Patients (Pacientes) 🚧
-Status: Não iniciado
-- [ ] Entidade Patient
-- [ ] CRUD completo
-- [ ] Dados demográficos
-- [ ] Informações de contato
-- [ ] Convênios/seguros
-- [ ] Histórico médico
+#### 1. Patients (Pacientes) ✅
+Status: **Concluído!**
+- [x] Entidade Patient
+- [x] CRUD completo
+- [x] Dados demográficos
+- [x] Informações de contato
+- [x] Convênios/seguros
+- [x] Busca avançada (nome, CPF, email)
+- [x] Soft delete e desativação
+- [x] Validações completas
+- [x] Documentação Swagger
 
 #### 2. Tests Catalog (Catálogo de Exames) 🚧
 Status: Não iniciado

@@ -37,6 +37,7 @@ async function bootstrap() {
     .addTag('permissions', 'Gestão de permissões')
     .addTag('modules', 'Gestão de módulos')
     .addTag('features', 'Gestão de features')
+    .addTag('patients', 'Gestão de pacientes')
     .addBearerAuth()
     .build();
   

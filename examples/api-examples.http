@@ -197,3 +197,73 @@ GET {{baseUrl}}/feature
 
 ### Buscar Feature por ID
 GET {{baseUrl}}/feature/1
+
+### ============================================
+### PATIENTS - Pacientes
+### ============================================
+
+### Criar Paciente
+POST {{baseUrl}}/patients
+Content-Type: application/json
+
+{
+  "name": "Maria da Silva Santos",
+  "cpf": "12345678901",
+  "rg": "123456789",
+  "dateOfBirth": "1990-05-15",
+  "gender": "female",
+  "bloodType": "O+",
+  "email": "maria.silva@email.com",
+  "phone": "(11) 3456-7890",
+  "mobilePhone": "(11) 98765-4321",
+  "zipCode": "01234-567",
+  "address": "Rua das Flores, 123, Apto 45",
+  "city": "São Paulo",
+  "state": "SP",
+  "country": "Brasil",
+  "insuranceName": "Unimed",
+  "insuranceNumber": "1234567890",
+  "insuranceValidity": "2025-12-31",
+  "emergencyContactName": "João Silva Santos",
+  "emergencyContactPhone": "(11) 99999-8888",
+  "emergencyContactRelationship": "Esposo",
+  "allergies": "Penicilina, Dipirona",
+  "chronicDiseases": "Diabetes tipo 2, Hipertensão",
+  "medications": "Losartana 50mg, Metformina 850mg",
+  "observations": "Paciente idoso, necessita acompanhante",
+  "isActive": true,
+  "companyId": 1
+}
+
+### Listar Pacientes
+GET {{baseUrl}}/patients
+
+### Buscar Pacientes (por nome, CPF ou email)
+GET {{baseUrl}}/patients?search=Maria
+
+### Filtrar Pacientes por Empresa
+GET {{baseUrl}}/patients?companyId=1
+
+### Filtrar Pacientes Ativos
+GET {{baseUrl}}/patients?isActive=true
+
+### Buscar Paciente por ID
+GET {{baseUrl}}/patients/1
+
+### Buscar Paciente por CPF
+GET {{baseUrl}}/patients/cpf/12345678901
+
+### Atualizar Paciente
+PATCH {{baseUrl}}/patients/1
+Content-Type: application/json
+
+{
+  "phone": "(11) 98765-9999",
+  "address": "Rua Nova, 456"
+}
+
+### Desativar Paciente
+PATCH {{baseUrl}}/patients/1/deactivate
+
+### Deletar Paciente (Soft Delete)
+DELETE {{baseUrl}}/patients/1
