@@ -381,3 +381,109 @@ Content-Type: application/json
 
 ### Deletar Painel (Soft Delete)
 DELETE {{baseUrl}}/test-panels/1
+
+### ============================================
+### ORDERS - Ordens de Coleta
+### ============================================
+
+### Criar Ordem de Coleta
+POST {{baseUrl}}/orders
+Content-Type: application/json
+
+{
+  "patientId": 1,
+  "requestedById": 2,
+  "companyId": 1,
+  "items": [
+    {
+      "testId": 1,
+      "price": 45.00,
+      "quantity": 1,
+      "discount": 0
+    },
+    {
+      "testId": 2,
+      "price": 25.00,
+      "quantity": 1
+    }
+  ],
+  "priority": "routine",
+  "scheduledAt": "2025-11-01T10:00:00Z",
+  "clinicalInfo": "Paciente diabético, em jejum de 12h",
+  "observations": "Primeira coleta do paciente"
+}
+
+### Listar Ordens
+GET {{baseUrl}}/orders
+
+### Filtrar Ordens por Status
+GET {{baseUrl}}/orders?status=requested
+
+### Filtrar Ordens por Paciente
+GET {{baseUrl}}/orders?patientId=1
+
+### Buscar Ordem por ID
+GET {{baseUrl}}/orders/1
+
+### Atualizar Status da Ordem
+PATCH {{baseUrl}}/orders/1
+Content-Type: application/json
+
+{
+  "status": "collected",
+  "observations": "Coleta realizada com sucesso"
+}
+
+### Cancelar Ordem
+DELETE {{baseUrl}}/orders/1
+
+### ============================================
+### SAMPLES - Amostras e Rastreamento
+### ============================================
+
+### Registrar Coleta de Amostra
+POST {{baseUrl}}/samples
+Content-Type: application/json
+
+{
+  "orderItemId": 1,
+  "type": "blood",
+  "collectedById": 3,
+  "storageLocation": "Refrigerador A - Prateleira 2",
+  "volume": 5.0,
+  "container": "Tubo roxo (EDTA)",
+  "isAcceptable": true,
+  "observations": "Amostra coletada às 08:30"
+}
+
+### Listar Amostras
+GET {{baseUrl}}/samples
+
+### Filtrar Amostras por Status
+GET {{baseUrl}}/samples?status=collected
+
+### Buscar por Código de Barras
+GET {{baseUrl}}/samples?barcode=SMP251031000001
+
+### Buscar Amostra por ID
+GET {{baseUrl}}/samples/1
+
+### Buscar por Código de Barras (endpoint específico)
+GET {{baseUrl}}/samples/barcode/SMP251031000001
+
+### Atualizar Status da Amostra
+PATCH {{baseUrl}}/samples/1
+Content-Type: application/json
+
+{
+  "status": "in_analysis",
+  "storageLocation": "Analisador automático - Setor Hematologia"
+}
+
+### Rejeitar Amostra
+PATCH {{baseUrl}}/samples/1/reject
+Content-Type: application/json
+
+{
+  "reason": "Amostra hemolisada"
+}

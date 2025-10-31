@@ -40,6 +40,8 @@ async function bootstrap() {
     .addTag('patients', 'Gestão de pacientes')
     .addTag('tests', 'Catálogo de exames')
     .addTag('test-panels', 'Painéis de exames')
+    .addTag('orders', 'Ordens de coleta')
+    .addTag('samples', 'Amostras e rastreamento')
     .addBearerAuth()
     .build();
   

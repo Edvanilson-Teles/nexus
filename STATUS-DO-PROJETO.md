@@ -113,6 +113,33 @@ Criar uma plataforma completa de gerenciamento para laboratórios de análises c
 - ✅ Precificação especial e descontos
 - ✅ Retorna lista completa de exames incluídos
 
+#### Orders (Ordens de Coleta) 🆕
+- ✅ POST /orders - Criar ordem com itens
+- ✅ GET /orders - Listar ordens (com filtros)
+- ✅ GET /orders/:id - Buscar ordem por ID
+- ✅ PATCH /orders/:id - Atualizar ordem
+- ✅ DELETE /orders/:id - Cancelar ordem
+- ✅ 6 status: requested, scheduled, collected, in_analysis, completed, cancelled
+- ✅ 3 prioridades: routine, urgent, emergency
+- ✅ Número único gerado automaticamente (ORD2510310001)
+- ✅ Vinculação com paciente, médico, empresa
+- ✅ OrderItems vinculados a testes ou painéis
+- ✅ Precificação por item
+
+#### Samples (Amostras) 🆕
+- ✅ POST /samples - Registrar coleta
+- ✅ GET /samples - Listar amostras (com filtros)
+- ✅ GET /samples/:id - Buscar amostra por ID
+- ✅ GET /samples/barcode/:barcode - Buscar por código de barras
+- ✅ PATCH /samples/:id - Atualizar amostra
+- ✅ PATCH /samples/:id/reject - Rejeitar amostra
+- ✅ 7 status: pending, collected, in_transit, received, in_analysis, analyzed, rejected
+- ✅ 9 tipos de amostra (blood, serum, plasma, urine, etc.)
+- ✅ Código de barras único gerado (SMP251031000001)
+- ✅ Rastreamento completo
+- ✅ Informações de armazenamento e volume
+- ✅ Sistema de controle de qualidade
+
 ---
 
 ## 🔄 Em Desenvolvimento Ativo
