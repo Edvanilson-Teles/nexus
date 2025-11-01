@@ -56,13 +56,13 @@ export class Order extends BaseEntity {
   priority: OrderPriority;
 
   // Agendamento
-  @Column({ type: 'datetime', nullable: true })
+  @Column({ type: 'timestamptz', nullable: true })
   scheduledAt?: Date;
 
-  @Column({ type: 'datetime', nullable: true })
+  @Column({ type: 'timestamptz', nullable: true })
   collectedAt?: Date;
 
-  @Column({ type: 'datetime', nullable: true })
+  @Column({ type: 'timestamptz', nullable: true })
   completedAt?: Date;
 
   // Informações adicionais

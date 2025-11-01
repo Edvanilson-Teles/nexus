@@ -65,7 +65,7 @@ export class Report {
   @Column({ name: 'pdf_generated', type: 'boolean', default: false })
   pdfGenerated: boolean;
 
-  @Column({ name: 'pdf_generated_at', type: 'datetime', nullable: true })
+  @Column({ name: 'pdf_generated_at', type: 'timestamptz', nullable: true })
   pdfGeneratedAt: Date;
 
   @Column({ name: 'validated_by', nullable: true })
@@ -75,7 +75,7 @@ export class Report {
   @JoinColumn({ name: 'validated_by' })
   validator: User;
 
-  @Column({ name: 'validated_at', type: 'datetime', nullable: true })
+  @Column({ name: 'validated_at', type: 'timestamptz', nullable: true })
   validatedAt: Date;
 
   @Column({ name: 'signed_by', nullable: true })
@@ -85,7 +85,7 @@ export class Report {
   @JoinColumn({ name: 'signed_by' })
   signer: User;
 
-  @Column({ name: 'signed_at', type: 'datetime', nullable: true })
+  @Column({ name: 'signed_at', type: 'timestamptz', nullable: true })
   signedAt: Date;
 
   @Column({ name: 'signature_hash', type: 'varchar', length: 255, nullable: true })
@@ -98,19 +98,19 @@ export class Report {
   @JoinColumn({ name: 'released_by' })
   releaser: User;
 
-  @Column({ name: 'released_at', type: 'datetime', nullable: true })
+  @Column({ name: 'released_at', type: 'timestamptz', nullable: true })
   releasedAt: Date;
 
   @Column({ name: 'share_token', type: 'varchar', length: 100, nullable: true, unique: true })
   shareToken: string; // Secure sharing token
 
-  @Column({ name: 'share_expires_at', type: 'datetime', nullable: true })
+  @Column({ name: 'share_expires_at', type: 'timestamptz', nullable: true })
   shareExpiresAt: Date;
 
   @Column({ name: 'email_sent', type: 'boolean', default: false })
   emailSent: boolean;
 
-  @Column({ name: 'email_sent_at', type: 'datetime', nullable: true })
+  @Column({ name: 'email_sent_at', type: 'timestamptz', nullable: true })
   emailSentAt: Date;
 
   @Column({ name: 'is_active', type: 'boolean', default: true })
@@ -122,6 +122,6 @@ export class Report {
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
-  @Column({ name: 'deleted_at', type: 'datetime', nullable: true })
+  @Column({ name: 'deleted_at', type: 'timestamptz', nullable: true })
   deletedAt: Date;
 }
