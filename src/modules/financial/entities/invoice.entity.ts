@@ -95,6 +95,6 @@ export class Invoice {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @Column({ type: 'datetime', nullable: true })
+  @Column({ type: 'timestamptz', nullable: true })
   deletedAt: Date;
 }

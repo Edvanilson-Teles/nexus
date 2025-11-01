@@ -53,7 +53,7 @@ export class Sample extends BaseEntity {
   @Column({ nullable: true })
   collectedById?: number;
 
-  @Column({ type: 'datetime', nullable: true })
+  @Column({ type: 'timestamptz', nullable: true })
   collectedAt?: Date;
 
   // Armazenamento

@@ -62,21 +62,21 @@ export class Result {
   @Column({ name: 'validated_by', nullable: true })
   validatedBy: number;
 
-  @Column({ name: 'validated_at', type: 'datetime', nullable: true })
+  @Column({ name: 'validated_at', type: 'timestamptz', nullable: true })
   validatedAt: Date;
 
   // Entry info
   @Column({ name: 'entered_by', nullable: true })
   enteredBy: number;
 
-  @Column({ name: 'entered_at', type: 'datetime', nullable: true })
+  @Column({ name: 'entered_at', type: 'timestamptz', nullable: true })
   enteredAt: Date;
 
   // Review/Release info
   @Column({ name: 'reviewed_by', nullable: true })
   reviewedBy: number;
 
-  @Column({ name: 'reviewed_at', type: 'datetime', nullable: true })
+  @Column({ name: 'reviewed_at', type: 'timestamptz', nullable: true })
   reviewedAt: Date;
 
   // Correction tracking
@@ -101,7 +101,7 @@ export class Result {
   qcComments: string;
 
   // Soft delete
-  @Column({ name: 'deleted_at', type: 'datetime', nullable: true })
+  @Column({ name: 'deleted_at', type: 'timestamptz', nullable: true })
   deletedAt: Date;
 
   @CreateDateColumn({ name: 'created_at' })

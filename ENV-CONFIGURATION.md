@@ -102,6 +102,20 @@ DB_DATABASE=nexus_db
 DATABASE_URL=postgresql://nexus_user:nexus_password@localhost:5432/nexus_db
 ```
 
+> Prioridade de configuração de banco (ordem de avaliação):
+>
+> 1) Se `DB_HOST` ou `DB_TYPE` estiverem definidos, a aplicação usa as variáveis discretas (ignora `DATABASE_URL`).
+>
+> 2) Caso contrário, se `DATABASE_URL` estiver definida, ela será utilizada.
+>
+> 3) Se nada disso estiver presente e `NODE_ENV !== production`, o SQLite é usado automaticamente para desenvolvimento.
+
+> Observações:
+>
+> - O valor `DB_TYPE=postgresql` é automaticamente normalizado para `postgres` (driver do TypeORM).
+> - Para bancos gerenciados (Neon, RDS, etc.), habilite SSL com `DB_SSL=true` e, se necessário, `DB_SSL_REJECT_UNAUTHORIZED=false`.
+> - Pool de conexões: `DB_MAX_CONNECTIONS` (padrão 10) e `DB_CONNECTION_TIMEOUT` em ms (padrão 30000) são suportados.
+
 **Quando usar PostgreSQL:**
 - 🏢 Ambiente de produção
 - 👥 Múltiplos usuários simultâneos

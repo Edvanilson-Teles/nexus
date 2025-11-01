@@ -64,10 +64,10 @@ export class Payment {
   @Column({ nullable: true })
   processedBy: number;
 
-  @Column({ type: 'datetime', nullable: true })
+  @Column({ type: 'timestamptz', nullable: true })
   processedAt: Date;
 
-  @Column({ type: 'datetime', nullable: true })
+  @Column({ type: 'timestamptz', nullable: true })
   refundedAt: Date;
 
   @Column({ nullable: true })
