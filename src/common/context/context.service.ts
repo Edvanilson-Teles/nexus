@@ -1,6 +1,6 @@
 import { Injectable, Scope } from '@nestjs/common';
 import { User } from 'src/modules/user/entities/user.entity';
-import { Company } from 'src/modules/company/entities/company.entity';
+import { Company } from 'src/modules/organization/modules/company/entities/company.entity';
 
 export interface AppContext {
   user?: Partial<User>;

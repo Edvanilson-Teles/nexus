@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { handleDbError } from '../../../common/db-error-handler';
+import { handleDbError } from 'src/common/db-error-handler';
 import { CreateEmployeeDto } from '../dto/create-employee.dto';
 import { Employee } from '../entities/employee.entity';
 import { EmployeeMapper } from '../mappers/employee.mapper';

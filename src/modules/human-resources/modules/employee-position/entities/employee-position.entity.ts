@@ -1,6 +1,6 @@
 import { BaseCompanyEntity } from 'src/database/entities/base-company.entity';
-import { Employee } from 'src/modules/employee/entities/employee.entity';
-import { Position } from 'src/modules/position/entities/position.entity';
+import { Employee } from 'src/modules/human-resources/modules/employee/entities/employee.entity';
+import { Position } from 'src/modules/organization/modules/position/entities/position.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, Unique } from 'typeorm';
 
 @Index(['employee', 'position', 'companyId'])

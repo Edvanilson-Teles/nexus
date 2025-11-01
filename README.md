@@ -1,29 +1,63 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Nexus - Clinical Laboratory Platform
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Sistema completo de gerenciamento para laboratórios de análises clínicas, desenvolvido com NestJS (backend) e Next.js (frontend).
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 📚 Documentação
+
+- **[🚀 Guia Rápido (Quick Start)](./QUICK-START.md)** - Comece aqui!
+- **[🌐 Como Acessar e Testar](./COMO-ACESSAR.md)** - Instruções para rodar localmente
+- **[📖 Documentação Completa em PT-BR](./README-PT.md)** - Documentação detalhada
+- **[🧪 Exemplos de API](./examples/api-examples.http)** - Requisições de exemplo
+
+## ⚡ Início Rápido
+
+```bash
+# 1. Clonar o repositório
+git clone https://github.com/Edvanilson-Teles/nexus.git
+cd nexus
+
+# 2. Instalar dependências
+npm install --legacy-peer-deps
+
+# 3. Iniciar o servidor
+npm run start:dev
+
+# 4. Acessar a API Swagger
+# Abra http://localhost:3000/api no navegador
+```
+
+## ✨ Features Atuais
+
+- ✅ Autenticação JWT com RBAC
+- ✅ Gestão de Usuários
+- ✅ Sistema de Roles e Permissões
+- ✅ Gestão de Empresas/Laboratórios
+- ✅ Gestão de Cargos e Funcionários
+- ✅ API REST com Swagger/OpenAPI
+- ✅ SQLite (dev) e PostgreSQL (prod)
+- ✅ Docker Compose para desenvolvimento
+- ✅ Hot Reload e TypeScript
+
+## 🔄 Em Desenvolvimento
+
+- 🔄 Módulo de Pacientes
+- 🔄 Catálogo de Exames
+- 🔄 Ordens e Amostras
+- 🔄 Resultados e Laudos
+- 🔄 Sistema Financeiro
+- 🔄 Frontend Next.js
+
+## 🛠️ Tecnologias
+
+- **Backend**: NestJS 11, TypeORM, PostgreSQL/SQLite
+- **Autenticação**: JWT, Passport
+- **Validação**: class-validator
+- **Documentação**: Swagger/OpenAPI
+- **DevOps**: Docker, Docker Compose
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Platform for managing clinical laboratory operations including patient management, test orders, sample tracking, results, and financial operations.
 
 ## Project setup
 

@@ -1,0 +1,864 @@
+# Nexus API Examples
+# Use com REST Client extension no VS Code ou importe no Insomnia/Postman
+
+@baseUrl = http://localhost:3000
+
+### Health Check
+GET {{baseUrl}}/
+
+### ============================================
+### USERS - Usuários
+### ============================================
+
+### Criar Usuário
+POST {{baseUrl}}/user
+Content-Type: application/json
+
+{
+  "name": "Admin User",
+  "email": "admin@nexus.com",
+  "password": "Admin@123"
+}
+
+### Listar Usuários
+GET {{baseUrl}}/user
+
+### Buscar Usuário por ID
+GET {{baseUrl}}/user/1
+
+### Atualizar Usuário
+PATCH {{baseUrl}}/user/1
+Content-Type: application/json
+
+{
+  "name": "Admin User Updated"
+}
+
+### Atualizar Senha do Usuário
+PATCH {{baseUrl}}/user/1/password
+Content-Type: application/json
+
+{
+  "password": "NewPassword@123"
+}
+
+### Deletar Usuário
+DELETE {{baseUrl}}/user/1
+
+### ============================================
+### ROLES - Perfis/Papéis
+### ============================================
+
+### Criar Role
+POST {{baseUrl}}/role
+Content-Type: application/json
+
+{
+  "name": "Admin",
+  "description": "Administrador do sistema"
+}
+
+### Listar Roles
+GET {{baseUrl}}/role
+
+### Buscar Role por ID
+GET {{baseUrl}}/role/1
+
+### Atualizar Role
+PATCH {{baseUrl}}/role/1
+Content-Type: application/json
+
+{
+  "description": "Administrador geral do sistema"
+}
+
+### Deletar Role
+DELETE {{baseUrl}}/role/1
+
+### ============================================
+### COMPANIES - Empresas
+### ============================================
+
+### Criar Empresa
+POST {{baseUrl}}/company
+Content-Type: application/json
+
+{
+  "name": "Laboratório Nexus",
+  "cnpj": "12.345.678/0001-90",
+  "address": "Rua das Análises, 123",
+  "phone": "(11) 98765-4321",
+  "email": "contato@labonexus.com",
+  "isActive": true
+}
+
+### Listar Empresas
+GET {{baseUrl}}/company
+
+### Buscar Empresa por ID
+GET {{baseUrl}}/company/1
+
+### Atualizar Empresa
+PATCH {{baseUrl}}/company/1
+Content-Type: application/json
+
+{
+  "phone": "(11) 98765-9999"
+}
+
+### Deletar Empresa
+DELETE {{baseUrl}}/company/1
+
+### ============================================
+### POSITIONS - Cargos
+### ============================================
+
+### Criar Cargo
+POST {{baseUrl}}/position
+Content-Type: application/json
+
+{
+  "name": "Técnico de Laboratório",
+  "description": "Responsável pela coleta e análise de amostras",
+  "level": "Pleno",
+  "requirements": "Formação em Biomedicina ou áreas afins"
+}
+
+### Listar Cargos
+GET {{baseUrl}}/position
+
+### Buscar Cargo por ID
+GET {{baseUrl}}/position/1
+
+### Atualizar Cargo
+PATCH {{baseUrl}}/position/1
+Content-Type: application/json
+
+{
+  "level": "Sênior"
+}
+
+### Deletar Cargo
+DELETE {{baseUrl}}/position/1
+
+### ============================================
+### PERMISSIONS - Permissões
+### ============================================
+
+### Criar Permissão
+POST {{baseUrl}}/permission
+Content-Type: application/json
+
+{
+  "action": "user:create",
+  "description": "Permissão para criar usuários"
+}
+
+### Listar Permissões
+GET {{baseUrl}}/permission
+
+### Buscar Permissão por ID
+GET {{baseUrl}}/permission/1
+
+### ============================================
+### MODULES - Módulos
+### ============================================
+
+### Criar Módulo
+POST {{baseUrl}}/module
+Content-Type: application/json
+
+{
+  "name": "Pacientes",
+  "description": "Módulo de gestão de pacientes"
+}
+
+### Listar Módulos
+GET {{baseUrl}}/module
+
+### Buscar Módulo por ID
+GET {{baseUrl}}/module/1
+
+### ============================================
+### FEATURES - Features
+### ============================================
+
+### Criar Feature
+POST {{baseUrl}}/feature
+Content-Type: application/json
+
+{
+  "name": "Cadastro de Pacientes",
+  "description": "Feature para cadastrar novos pacientes"
+}
+
+### Listar Features
+GET {{baseUrl}}/feature
+
+### Buscar Feature por ID
+GET {{baseUrl}}/feature/1
+
+### ============================================
+### PATIENTS - Pacientes
+### ============================================
+
+### Criar Paciente
+POST {{baseUrl}}/patients
+Content-Type: application/json
+
+{
+  "name": "Maria da Silva Santos",
+  "cpf": "12345678901",
+  "rg": "123456789",
+  "dateOfBirth": "1990-05-15",
+  "gender": "female",
+  "bloodType": "O+",
+  "email": "maria.silva@email.com",
+  "phone": "(11) 3456-7890",
+  "mobilePhone": "(11) 98765-4321",
+  "zipCode": "01234-567",
+  "address": "Rua das Flores, 123, Apto 45",
+  "city": "São Paulo",
+  "state": "SP",
+  "country": "Brasil",
+  "insuranceName": "Unimed",
+  "insuranceNumber": "1234567890",
+  "insuranceValidity": "2025-12-31",
+  "emergencyContactName": "João Silva Santos",
+  "emergencyContactPhone": "(11) 99999-8888",
+  "emergencyContactRelationship": "Esposo",
+  "allergies": "Penicilina, Dipirona",
+  "chronicDiseases": "Diabetes tipo 2, Hipertensão",
+  "medications": "Losartana 50mg, Metformina 850mg",
+  "observations": "Paciente idoso, necessita acompanhante",
+  "isActive": true,
+  "companyId": 1
+}
+
+### Listar Pacientes
+GET {{baseUrl}}/patients
+
+### Buscar Pacientes (por nome, CPF ou email)
+GET {{baseUrl}}/patients?search=Maria
+
+### Filtrar Pacientes por Empresa
+GET {{baseUrl}}/patients?companyId=1
+
+### Filtrar Pacientes Ativos
+GET {{baseUrl}}/patients?isActive=true
+
+### Buscar Paciente por ID
+GET {{baseUrl}}/patients/1
+
+### Buscar Paciente por CPF
+GET {{baseUrl}}/patients/cpf/12345678901
+
+### Atualizar Paciente
+PATCH {{baseUrl}}/patients/1
+Content-Type: application/json
+
+{
+  "phone": "(11) 98765-9999",
+  "address": "Rua Nova, 456"
+}
+
+### Desativar Paciente
+PATCH {{baseUrl}}/patients/1/deactivate
+
+### Deletar Paciente (Soft Delete)
+DELETE {{baseUrl}}/patients/1
+
+### ============================================
+### TESTS - Catálogo de Exames
+### ============================================
+
+### Criar Exame
+POST {{baseUrl}}/tests
+Content-Type: application/json
+
+{
+  "code": "HEMO001",
+  "name": "Hemograma Completo",
+  "category": "hematology",
+  "description": "Análise completa dos componentes sanguíneos",
+  "type": "numeric",
+  "unit": "mil/mm³",
+  "referenceMin": 4.5,
+  "referenceMax": 11.0,
+  "method": "Contador automático",
+  "specimen": "Sangue total com EDTA",
+  "container": "Tubo roxo (EDTA)",
+  "turnaroundTime": 24,
+  "preparation": "Não requer preparo especial",
+  "requiresFasting": false,
+  "price": 45.00,
+  "cost": 15.00,
+  "isActive": true,
+  "isAvailable": true,
+  "companyId": 1
+}
+
+### Listar Exames
+GET {{baseUrl}}/tests
+
+### Buscar Exames (por nome, código ou descrição)
+GET {{baseUrl}}/tests?search=Hemograma
+
+### Filtrar Exames por Categoria
+GET {{baseUrl}}/tests?category=hematology
+
+### Filtrar Exames por Empresa
+GET {{baseUrl}}/tests?companyId=1
+
+### Filtrar Exames Ativos
+GET {{baseUrl}}/tests?isActive=true
+
+### Buscar Exame por ID
+GET {{baseUrl}}/tests/1
+
+### Buscar Exame por Código
+GET {{baseUrl}}/tests/code/HEMO001
+
+### Atualizar Exame
+PATCH {{baseUrl}}/tests/1
+Content-Type: application/json
+
+{
+  "price": 50.00,
+  "turnaroundTime": 12
+}
+
+### Desativar Exame
+PATCH {{baseUrl}}/tests/1/deactivate
+
+### Deletar Exame (Soft Delete)
+DELETE {{baseUrl}}/tests/1
+
+### ============================================
+### TEST PANELS - Painéis de Exames
+### ============================================
+
+### Criar Painel de Exames
+POST {{baseUrl}}/test-panels
+Content-Type: application/json
+
+{
+  "code": "CHECKUP01",
+  "name": "Check-up Completo",
+  "description": "Painel completo para check-up anual",
+  "testIds": [1, 2, 3, 4],
+  "price": 150.00,
+  "discount": 10,
+  "isActive": true,
+  "observations": "Recomendado para adultos acima de 40 anos",
+  "companyId": 1
+}
+
+### Listar Painéis
+GET {{baseUrl}}/test-panels
+
+### Buscar Painéis (por nome, código ou descrição)
+GET {{baseUrl}}/test-panels?search=Check-up
+
+### Filtrar Painéis por Empresa
+GET {{baseUrl}}/test-panels?companyId=1
+
+### Filtrar Painéis Ativos
+GET {{baseUrl}}/test-panels?isActive=true
+
+### Buscar Painel por ID
+GET {{baseUrl}}/test-panels/1
+
+### Atualizar Painel
+PATCH {{baseUrl}}/test-panels/1
+Content-Type: application/json
+
+{
+  "price": 140.00,
+  "discount": 15,
+  "testIds": [1, 2, 3, 4, 5]
+}
+
+### Deletar Painel (Soft Delete)
+DELETE {{baseUrl}}/test-panels/1
+
+### ============================================
+### ORDERS - Ordens de Coleta
+### ============================================
+
+### Criar Ordem de Coleta
+POST {{baseUrl}}/orders
+Content-Type: application/json
+
+{
+  "patientId": 1,
+  "requestedById": 2,
+  "companyId": 1,
+  "items": [
+    {
+      "testId": 1,
+      "price": 45.00,
+      "quantity": 1,
+      "discount": 0
+    },
+    {
+      "testId": 2,
+      "price": 25.00,
+      "quantity": 1
+    }
+  ],
+  "priority": "routine",
+  "scheduledAt": "2025-11-01T10:00:00Z",
+  "clinicalInfo": "Paciente diabético, em jejum de 12h",
+  "observations": "Primeira coleta do paciente"
+}
+
+### Listar Ordens
+GET {{baseUrl}}/orders
+
+### Filtrar Ordens por Status
+GET {{baseUrl}}/orders?status=requested
+
+### Filtrar Ordens por Paciente
+GET {{baseUrl}}/orders?patientId=1
+
+### Buscar Ordem por ID
+GET {{baseUrl}}/orders/1
+
+### Atualizar Status da Ordem
+PATCH {{baseUrl}}/orders/1
+Content-Type: application/json
+
+{
+  "status": "collected",
+  "observations": "Coleta realizada com sucesso"
+}
+
+### Cancelar Ordem
+DELETE {{baseUrl}}/orders/1
+
+### ============================================
+### SAMPLES - Amostras e Rastreamento
+### ============================================
+
+### Registrar Coleta de Amostra
+POST {{baseUrl}}/samples
+Content-Type: application/json
+
+{
+  "orderItemId": 1,
+  "type": "blood",
+  "collectedById": 3,
+  "storageLocation": "Refrigerador A - Prateleira 2",
+  "volume": 5.0,
+  "container": "Tubo roxo (EDTA)",
+  "isAcceptable": true,
+  "observations": "Amostra coletada às 08:30"
+}
+
+### Listar Amostras
+GET {{baseUrl}}/samples
+
+### Filtrar Amostras por Status
+GET {{baseUrl}}/samples?status=collected
+
+### Buscar por Código de Barras
+GET {{baseUrl}}/samples?barcode=SMP251031000001
+
+### Buscar Amostra por ID
+GET {{baseUrl}}/samples/1
+
+### Buscar por Código de Barras (endpoint específico)
+GET {{baseUrl}}/samples/barcode/SMP251031000001
+
+### Atualizar Status da Amostra
+PATCH {{baseUrl}}/samples/1
+Content-Type: application/json
+
+{
+  "status": "in_analysis",
+  "storageLocation": "Analisador automático - Setor Hematologia"
+}
+
+### Rejeitar Amostra
+PATCH {{baseUrl}}/samples/1/reject
+Content-Type: application/json
+
+{
+  "reason": "Amostra hemolisada"
+}
+
+### ========================================
+### RESULTS API EXAMPLES
+### ========================================
+
+### 1. Create a Result (Hemograma - Normal)
+POST http://localhost:3000/results
+Content-Type: application/json
+
+{
+  "sampleId": 1,
+  "testId": 1,
+  "companyId": 1,
+  "value": "13.5",
+  "numericValue": 13.5,
+  "unit": "g/dL",
+  "flag": "normal",
+  "method": "Automated hematology analyzer",
+  "comments": "Sample processed without issues",
+  "status": "pending",
+  "enteredBy": 1,
+  "instrumentName": "Sysmex XN-1000",
+  "qcPassed": true,
+  "qcComments": "All QC controls within acceptable range"
+}
+
+### 2. Create a Result (Glicose - High)
+POST http://localhost:3000/results
+Content-Type: application/json
+
+{
+  "sampleId": 1,
+  "testId": 2,
+  "companyId": 1,
+  "value": "145",
+  "numericValue": 145,
+  "unit": "mg/dL",
+  "referenceRange": "70-100 mg/dL",
+  "method": "Enzymatic colorimetric",
+  "status": "pending",
+  "enteredBy": 1,
+  "instrumentName": "Cobas c311"
+}
+
+### 3. Create a Result (Qualitative - Negative)
+POST http://localhost:3000/results
+Content-Type: application/json
+
+{
+  "sampleId": 2,
+  "testId": 3,
+  "companyId": 1,
+  "value": "Negative",
+  "flag": "normal",
+  "referenceRange": "Negative",
+  "method": "Immunochromatography",
+  "status": "pending",
+  "enteredBy": 1
+}
+
+### 4. Get All Results
+GET http://localhost:3000/results
+
+### 5. Get Results with Filters (By Sample)
+GET http://localhost:3000/results?sampleId=1
+
+### 6. Get Results with Filters (By Status)
+GET http://localhost:3000/results?status=pending
+
+### 7. Get Results with Filters (By Flag - High)
+GET http://localhost:3000/results?flag=high
+
+### 8. Get Results with Filters (By Company and Status)
+GET http://localhost:3000/results?companyId=1&status=validated
+
+### 9. Get Results for a Specific Patient
+GET http://localhost:3000/results/patient/1
+
+### 10. Get Result by ID
+GET http://localhost:3000/results/1
+
+### 11. Update a Result
+PATCH http://localhost:3000/results/1
+Content-Type: application/json
+
+{
+  "comments": "Updated comment - confirmed value",
+  "qcComments": "Repeat test confirmed initial result"
+}
+
+### 12. Validate a Result
+PATCH http://localhost:3000/results/1/validate
+Content-Type: application/json
+
+{
+  "validatedBy": 2,
+  "comments": "Result verified and approved by lab supervisor"
+}
+
+### 13. Release a Result
+PATCH http://localhost:3000/results/1/release
+Content-Type: application/json
+
+{
+  "reviewedBy": 3
+}
+
+### 14. Create a Correction for a Result
+POST http://localhost:3000/results/1/correct
+Content-Type: application/json
+
+{
+  "sampleId": 1,
+  "testId": 1,
+  "companyId": 1,
+  "value": "13.2",
+  "numericValue": 13.2,
+  "unit": "g/dL",
+  "enteredBy": 1,
+  "correctionReason": "Transcription error in original result"
+}
+
+### 15. Delete a Result (Soft Delete)
+DELETE http://localhost:3000/results/1
+
+###
+### RESULTS - Advanced Examples
+###
+
+### 16. Create Result with Critical High Value
+POST http://localhost:3000/results
+Content-Type: application/json
+
+{
+  "sampleId": 3,
+  "testId": 4,
+  "companyId": 1,
+  "value": "450",
+  "numericValue": 450,
+  "unit": "mg/dL",
+  "referenceRange": "70-100 mg/dL",
+  "flag": "critical_high",
+  "method": "Enzymatic hexokinase",
+  "comments": "CRITICAL VALUE - Patient notified immediately",
+  "status": "pending",
+  "enteredBy": 1,
+  "instrumentName": "Cobas c311",
+  "qcPassed": true
+}
+
+### 17. Create Result with Critical Low Value
+POST http://localhost:3000/results
+Content-Type: application/json
+
+{
+  "sampleId": 3,
+  "testId": 5,
+  "companyId": 1,
+  "value": "2.1",
+  "numericValue": 2.1,
+  "unit": "mEq/L",
+  "referenceRange": "3.5-5.0 mEq/L",
+  "flag": "critical_low",
+  "method": "Ion-selective electrode",
+  "comments": "CRITICAL VALUE - Urgent medical attention required",
+  "status": "pending",
+  "enteredBy": 1,
+  "instrumentName": "ABL90 FLEX PLUS"
+}
+
+### 18. Create Result - Failed QC
+POST http://localhost:3000/results
+Content-Type: application/json
+
+{
+  "sampleId": 4,
+  "testId": 1,
+  "companyId": 1,
+  "value": "14.0",
+  "numericValue": 14.0,
+  "unit": "g/dL",
+  "status": "pending",
+  "enteredBy": 1,
+  "instrumentName": "Sysmex XN-1000",
+  "qcPassed": false,
+  "qcComments": "QC control #2 out of range - test repeated"
+}
+
+### 19. Batch Results - Multiple Tests from Same Sample
+POST http://localhost:3000/results
+Content-Type: application/json
+
+{
+  "sampleId": 5,
+  "testId": 6,
+  "companyId": 1,
+  "value": "180",
+  "numericValue": 180,
+  "unit": "mg/dL",
+  "referenceRange": "< 200 mg/dL",
+  "flag": "normal",
+  "method": "Enzymatic colorimetric",
+  "status": "pending",
+  "enteredBy": 1
+}
+
+### 20. Get All Results for Validation (Pending Status)
+GET http://localhost:3000/results?status=pending
+
+### 21. Get All Critical Results
+GET http://localhost:3000/results?flag=critical_high
+
+### 22. Get All Abnormal Results
+GET http://localhost:3000/results?flag=high
+
+### 23. Get Patient History of Results
+GET http://localhost:3000/results/patient/1
+
+### 24. Get Results by Test Type
+GET http://localhost:3000/results?testId=1
+
+### 25. Update Result with Additional Comments
+PATCH http://localhost:3000/results/2
+Content-Type: application/json
+
+{
+  "comments": "Delta check performed - variation within acceptable limits"
+}
+
+
+### ============================================
+### REPORTS - Relatórios/Laudos
+### ============================================
+
+### Criar Relatório (Laudo)
+POST {{baseUrl}}/reports
+Content-Type: application/json
+
+{
+  "patientId": 1,
+  "orderId": 1,
+  "companyId": 1,
+  "title": "Hemograma Completo - Resultados",
+  "findings": "Valores hematológicos dentro dos limites da normalidade para idade e sexo. Contagem de leucócitos, hemácias e plaquetas adequadas.",
+  "interpretation": "Hemograma sem alterações significativas. Todos os parâmetros avaliados encontram-se dentro dos valores de referência.",
+  "recommendations": "Manter acompanhamento médico regular. Repetir exame em 6 meses ou conforme orientação médica.",
+  "notes": "Paciente apresentava jejum de 12 horas. Amostra coletada sem intercorrências."
+}
+
+### Listar Todos os Relatórios
+GET {{baseUrl}}/reports
+
+### Listar Relatórios por Status
+GET {{baseUrl}}/reports?status=draft
+
+### Listar Relatórios por Paciente
+GET {{baseUrl}}/reports?patientId=1
+
+### Listar Relatórios por Empresa
+GET {{baseUrl}}/reports?companyId=1
+
+### Buscar Relatório por ID
+GET {{baseUrl}}/reports/1
+
+### Buscar Relatório por Número
+GET {{baseUrl}}/reports/number/RPT2510310001
+
+### Atualizar Relatório (apenas rascunhos)
+PATCH {{baseUrl}}/reports/1
+Content-Type: application/json
+
+{
+  "title": "Hemograma Completo - Resultados Atualizados",
+  "findings": "Valores hematológicos atualizados após revisão.",
+  "interpretation": "Hemograma normal com pequena variação no VCM.",
+  "recommendations": "Acompanhamento em 3 meses."
+}
+
+### Validar Relatório
+PATCH {{baseUrl}}/reports/1/validate
+Content-Type: application/json
+
+{
+  "validatedBy": 1
+}
+
+### Assinar Relatório Digitalmente
+PATCH {{baseUrl}}/reports/1/sign
+Content-Type: application/json
+
+{
+  "signedBy": 1
+}
+
+### Liberar Relatório para Paciente
+PATCH {{baseUrl}}/reports/1/release
+Content-Type: application/json
+
+{
+  "releasedBy": 1
+}
+
+### Gerar PDF do Relatório
+POST {{baseUrl}}/reports/1/generate-pdf
+
+### Download do PDF do Relatório
+GET {{baseUrl}}/reports/1/download-pdf
+
+### Gerar Link de Compartilhamento Seguro (7 dias)
+POST {{baseUrl}}/reports/1/share
+
+### Gerar Link de Compartilhamento com Expiração Customizada (30 dias)
+POST {{baseUrl}}/reports/1/share?expiresInDays=30
+
+### Acessar Relatório por Link de Compartilhamento
+# Substitua {token} pelo token retornado no endpoint de compartilhamento
+GET {{baseUrl}}/reports/share/{token}
+
+### Cancelar Relatório
+PATCH {{baseUrl}}/reports/1/cancel
+
+### Deletar Relatório (soft delete)
+DELETE {{baseUrl}}/reports/1
+
+### ============================================
+### WORKFLOW COMPLETO DE RELATÓRIO
+### ============================================
+
+### 1. Criar Relatório em Rascunho
+POST {{baseUrl}}/reports
+Content-Type: application/json
+
+{
+  "patientId": 1,
+  "orderId": 1,
+  "companyId": 1,
+  "title": "Exame de Glicemia e Colesterol",
+  "findings": "Glicemia em jejum: 95 mg/dL, Colesterol Total: 180 mg/dL, HDL: 50 mg/dL, LDL: 110 mg/dL, Triglicerídeos: 100 mg/dL",
+  "interpretation": "Perfil glicêmico e lipídico dentro dos valores de referência.",
+  "recommendations": "Manter hábitos alimentares saudáveis e prática regular de atividade física."
+}
+
+### 2. Validar o Relatório
+PATCH {{baseUrl}}/reports/2/validate
+Content-Type: application/json
+
+{
+  "validatedBy": 1
+}
+
+### 3. Assinar Digitalmente
+PATCH {{baseUrl}}/reports/2/sign
+Content-Type: application/json
+
+{
+  "signedBy": 1
+}
+
+### 4. Gerar PDF
+POST {{baseUrl}}/reports/2/generate-pdf
+
+### 5. Liberar para Paciente
+PATCH {{baseUrl}}/reports/2/release
+Content-Type: application/json
+
+{
+  "releasedBy": 1
+}
+
+### 6. Gerar Link de Compartilhamento
+POST {{baseUrl}}/reports/2/share?expiresInDays=14
+
+### 7. Download do PDF
+GET {{baseUrl}}/reports/2/download-pdf
+
